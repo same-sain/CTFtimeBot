@@ -1,7 +1,4 @@
-config.json
-subscribe.json
 test_api.py
-constants.py
 venv/
 
 __pycache__/
