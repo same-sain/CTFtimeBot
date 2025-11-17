@@ -60,7 +60,19 @@ def create_ctf_embed(info):
 
 client.create_ctf_embed = create_ctf_embed
 
-
+@client.tree.command(name="clearsyn", description="⚠️ Clear all global and guild commands.")
+async def clear_syn(interaction: discord.Interaction):
+    
+    await interaction.response.defer(ephemeral=True)
+    
+    client.tree.clear_commands(guild=None)
+    await client.tree.sync()
+    
+    if GUILD_ID:
+        client.tree.clear_commands(guild=discord.Object(id=GUILD_ID))
+        await client.tree.sync(guild=discord.Object(id=GUILD_ID))
+    
+    await interaction.followup.send("✅ ล้าง Global และ Guild Application Commands ทั้งหมดเรียบร้อยแล้ว! โปรดรอ 1-2 นาทีเพื่อให้ Discord อัปเดต", ephemeral=True)
 
 @tasks.loop(seconds=60)
 async def check_time_loop():
