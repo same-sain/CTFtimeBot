@@ -67,7 +67,7 @@ class ConfigurationGroup(app_commands.Group):
         return role_ids, ", ".join(role_names)
 
 
-    @app_commands.default_permissions(manage_guild=False) 
+    @app_commands.default_permissions(manage_guild=True) 
     @app_commands.command(name="setconfig", description="Set configurable bot options (limit, channel, roles, time)")
     @app_commands.describe(
         limit="จำนวน CTF ที่ต้องดึง",
@@ -152,7 +152,7 @@ class ConfigurationGroup(app_commands.Group):
         await interaction.followup.send(response_message, ephemeral=True)
 
 
-    @app_commands.default_permissions(manage_guild=False)
+    @app_commands.default_permissions(manage_guild=True)
     @app_commands.command(name="removeconfig", description="Remove roles from Admin or Notify list")
     @app_commands.describe(
         setting="เลือกรายการที่จะลบ Role ออก", 

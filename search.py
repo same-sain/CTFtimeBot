@@ -6,18 +6,19 @@ import requests
 from datetime import datetime
 import time
 from config import load_config
-from constants import GUILD_ID as CONST_GUILD_ID # เปลี่ยนชื่อเพื่อหลีกเลี่ยงความสับสน
 
-GUILD_OBJECT = discord.Object(id=CONST_GUILD_ID)
+GUILD_ID = discord.Object(id=978976733296459807)
+
 class SearchCommands(commands.Cog):
     """
     Cog สำหรับคำสั่ง /search เพื่อค้นหา CTF จาก CTFTime
     """
     def __init__(self, client):
         self.client = client
-        self.GUILD_ID = GUILD_OBJECT
+        self.GUILD_ID = GUILD_ID
 
     @app_commands.command(name="search", description="Command to search CTF you need to")
+    @app_commands.guilds(GUILD_ID)
     @app_commands.describe(
         name="ชื่องานที่ต้องการ",
         format="รูปแบบของงาน",

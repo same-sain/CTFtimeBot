@@ -151,8 +151,7 @@ async def on_ready():
         print('Time loop started')
 
     try:
-
-        synced = await client.tree.sync(guild=discord.Object(id=GUILD_ID))
+        synced = await client.tree.sync()
         print(f'Synced {len(synced)} commands.')
     except Exception as e:
         print(f'Error syncing commands: {e}')
